@@ -1,8 +1,7 @@
 package domain;
 
 import static net.bytebuddy.implementation.MethodDelegation.to;
-import static net.bytebuddy.matcher.ElementMatchers.nameStartsWith;
-import static net.bytebuddy.matcher.ElementMatchers.named;
+import static net.bytebuddy.matcher.ElementMatchers.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import interceptors.MutantInterceptor;
@@ -56,7 +55,7 @@ public class BuddyTests {
 
         final Cat cat = new ByteBuddy()
                 .subclass(Cat.class)
-                .method(nameStartsWith("get").or(nameStartsWith("set")))
+                .method(isGetter().or(isSetter()))
                 .intercept(to(GetterSetterInterceptor.class))
                 .make().load(getClass().getClassLoader(), ClassLoadingStrategy.Default.WRAPPER)
                 .getLoaded().newInstance();
