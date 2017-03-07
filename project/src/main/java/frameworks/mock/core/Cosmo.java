@@ -1,10 +1,11 @@
 package frameworks.mock.core;
 
-import static net.bytebuddy.matcher.ElementMatchers.any;
-
 import net.bytebuddy.ByteBuddy;
+import net.bytebuddy.description.type.TypeDescription;
 import net.bytebuddy.dynamic.loading.ClassLoadingStrategy;
 import net.bytebuddy.implementation.FixedValue;
+
+import static net.bytebuddy.matcher.ElementMatchers.*;
 
 /**
  * LECTRA
@@ -18,7 +19,7 @@ public class Cosmo {
         try {
             return new ByteBuddy()
                     .subclass(classToMock)
-                    .method(any())
+                    .method(not(isNative().or(isEquals()).or(returns(TypeDescription.VOID))))
                     .intercept(FixedValue.nullValue())
                     .make()
                     .load(classToMock.getClassLoader(), ClassLoadingStrategy.Default.WRAPPER)

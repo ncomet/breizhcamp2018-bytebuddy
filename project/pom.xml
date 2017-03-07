@@ -27,7 +27,7 @@
         <dependency>
             <groupId>net.bytebuddy</groupId>
             <artifactId>byte-buddy</artifactId>
-            <version>0.6.15</version>
+            <version>1.6.7</version>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
@@ -46,12 +46,6 @@
             <artifactId>mockito-core</artifactId>
             <version>1.10.19</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.bytebuddy</groupId>
-            <artifactId>byte-buddy-agent</artifactId>
-            <version>0.6.15</version>
-            <scope>runtime</scope>
         </dependency>
     </dependencies>
 
