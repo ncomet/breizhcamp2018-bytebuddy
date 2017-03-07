@@ -4,7 +4,7 @@ import static net.bytebuddy.implementation.MethodDelegation.to;
 import static net.bytebuddy.matcher.ElementMatchers.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import interceptors.MutantInterceptor;
+import interceptors.StrangeFeelingInterceptor;
 import net.bytebuddy.ByteBuddy;
 import net.bytebuddy.dynamic.loading.ClassLoadingStrategy;
 
@@ -22,7 +22,7 @@ import interceptors.GetterSetterInterceptor;
 public class BuddyTests {
 
     @Test
-    public void testJava() {
+    public void java() {
         final Cat cat = new Cat();
         cat.setName("Garfield");
         cat.feed("croquettes");
@@ -33,11 +33,11 @@ public class BuddyTests {
     }
 
     @Test
-    public void testBuddy() throws IllegalAccessException, InstantiationException {
+    public void buddyIntro() throws IllegalAccessException, InstantiationException {
         final Cat cat = new ByteBuddy()
                 .subclass(Cat.class)
-               /* .method(named("getStomach"))
-                .intercept(to(MutantInterceptor.class)) */
+                /*.method(named("getStomach"))
+                .intercept(to(StrangeFeelingInterceptor.class))*/
                 .make()
                 .load(getClass().getClassLoader(), ClassLoadingStrategy.Default.WRAPPER)
                 .getLoaded().newInstance();
@@ -51,7 +51,7 @@ public class BuddyTests {
     }
 
     @Test
-    public void testGettersSetters() throws Exception {
+    public void interceptors() throws Exception {
 
         final Cat cat = new ByteBuddy()
                 .subclass(Cat.class)
@@ -67,7 +67,7 @@ public class BuddyTests {
     }
 
     @Test
-    public void testMockito() throws Exception {
+    public void mockito() throws Exception {
         final Cat mock = Mockito.mock(Cat.class);
 
         mock.setName("Felix");
@@ -76,7 +76,7 @@ public class BuddyTests {
     }
 
     @Test
-    public void testCosmockpolitan() throws Exception {
+    public void cosmockpolitan() throws Exception {
         final Cat mock = Cosmockpolitan.mock(Cat.class);
 
         mock.setName("Felix");

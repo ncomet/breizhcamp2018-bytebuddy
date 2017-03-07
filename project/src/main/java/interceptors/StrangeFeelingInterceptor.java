@@ -11,12 +11,12 @@ import net.bytebuddy.implementation.bind.annotation.SuperCall;
  *
  * @author n.comet
  */
-public class MutantInterceptor {
+public class StrangeFeelingInterceptor {
 
     public static Set<String> intercept(@SuperCall Callable<Set<String>> callable) {
         try {
             final Set<String> stomach = callable.call();
-            stomach.add("baby alien");
+            stomach.add("bébé alien");
             return stomach;
         } catch (Exception e) {
             e.printStackTrace();
