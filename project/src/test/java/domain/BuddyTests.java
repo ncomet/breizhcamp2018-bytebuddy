@@ -26,9 +26,9 @@ public class BuddyTests {
         final Cat cat = new Cat();
         cat.setName("Garfield");
         cat.feed("croquettes");
-        cat.feed("patee");
+        cat.feed("patée");
 
-        assertThat(cat.getStomach()).containsExactly("croquettes", "patee");
+        assertThat(cat.getStomach()).containsExactly("croquettes", "patée");
         assertThat(cat.getName()).isEqualTo("Garfield");
     }
 
@@ -44,9 +44,9 @@ public class BuddyTests {
 
         cat.setName("Garfield");
         cat.feed("croquettes");
-        cat.feed("patee");
+        cat.feed("patée");
 
-        assertThat(cat.getStomach()).containsExactly("croquettes", "patee");
+        assertThat(cat.getStomach()).containsExactly("croquettes", "patée");
         assertThat(cat.getName()).isEqualTo("Garfield");
     }
 
