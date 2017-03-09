@@ -6,13 +6,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import interceptors.StrangeFeelingInterceptor;
 import net.bytebuddy.ByteBuddy;
-import net.bytebuddy.dynamic.loading.ClassLoadingStrategy;
 
+import net.bytebuddy.dynamic.loading.ClassLoadingStrategy;
+import net.bytebuddy.implementation.FixedValue;
 import org.mockito.Mockito;
 import org.testng.annotations.Test;
 
 import frameworks.mock.Cosmockpolitan;
 import interceptors.GetterSetterInterceptor;
+
+import java.util.Collections;
 
 /**
  * LECTRA
@@ -39,7 +42,7 @@ public class BuddyTests {
                 /*.method(named("getStomach"))
                 .intercept(to(StrangeFeelingInterceptor.class))*/
                 .make()
-                .load(getClass().getClassLoader(), ClassLoadingStrategy.Default.WRAPPER)
+                .load(getClass().getClassLoader())
                 .getLoaded().newInstance();
 
         cat.setName("Garfield");
@@ -57,12 +60,26 @@ public class BuddyTests {
                 .subclass(Cat.class)
                 .method(isGetter().or(isSetter()))
                 .intercept(to(GetterSetterInterceptor.class))
-                .make().load(getClass().getClassLoader(), ClassLoadingStrategy.Default.WRAPPER)
+                .make().load(getClass().getClassLoader())
                 .getLoaded().newInstance();
 
         cat.setName("Felix");
 
         assertThat(cat.getName()).isEqualTo("Felix");
+
+    }
+
+    @Test
+    public void classloadingStrategy() throws Exception {
+
+        final Cat cat = new ByteBuddy()
+                .subclass(Cat.class)
+                .method(named("getStomach"))
+                .intercept(FixedValue.value(Collections.singleton("NotToday")))
+                .make().load(getClass().getClassLoader(), ClassLoadingStrategy.Default.WRAPPER)
+                .getLoaded().newInstance();
+
+        assertThat(cat.getStomach()).containsExactly("NotToday");
 
     }
 

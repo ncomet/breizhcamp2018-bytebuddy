@@ -7,7 +7,6 @@ import java.lang.reflect.Method;
 import java.util.concurrent.Callable;
 
 import net.bytebuddy.ByteBuddy;
-import net.bytebuddy.dynamic.loading.ClassLoadingStrategy;
 import net.bytebuddy.implementation.bind.annotation.Origin;
 import net.bytebuddy.implementation.bind.annotation.RuntimeType;
 import net.bytebuddy.implementation.bind.annotation.SuperCall;
@@ -34,7 +33,7 @@ public class BuddySafe implements Safe {
                     .method(isAnnotatedWith(Lock.class))
                     .intercept(to(new BuddySafe(keyAttempt)))
                     .make()
-                    .load(instance.getClassLoader(), ClassLoadingStrategy.Default.INJECTION)
+                    .load(instance.getClassLoader())
                     .getLoaded()
                     .newInstance();
         } catch (InstantiationException | IllegalAccessException e) {
