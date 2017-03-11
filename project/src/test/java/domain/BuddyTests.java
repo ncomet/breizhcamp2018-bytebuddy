@@ -1,5 +1,6 @@
 package domain;
 
+import static net.bytebuddy.implementation.FixedValue.value;
 import static net.bytebuddy.implementation.MethodDelegation.to;
 import static net.bytebuddy.matcher.ElementMatchers.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -8,7 +9,6 @@ import interceptors.StrangeFeelingInterceptor;
 import net.bytebuddy.ByteBuddy;
 
 import net.bytebuddy.dynamic.loading.ClassLoadingStrategy;
-import net.bytebuddy.implementation.FixedValue;
 import org.mockito.Mockito;
 import org.testng.annotations.Test;
 
@@ -75,7 +75,7 @@ public class BuddyTests {
         final Cat cat = new ByteBuddy()
                 .subclass(Cat.class)
                 .method(named("getStomach"))
-                .intercept(FixedValue.value(Collections.singleton("NotToday")))
+                .intercept(value(Collections.singleton("NotToday")))
                 .make().load(getClass().getClassLoader(), ClassLoadingStrategy.Default.WRAPPER)
                 .getLoaded().newInstance();
 
