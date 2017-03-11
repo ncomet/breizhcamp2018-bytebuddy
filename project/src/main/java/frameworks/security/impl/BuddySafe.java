@@ -31,7 +31,7 @@ public class BuddySafe implements Safe {
             return new ByteBuddy()
                     .subclass(instance)
                     .method(isAnnotatedWith(Lock.class))
-                    .intercept(to(new BuddySafe(keyAttempt)))
+                    .intercept(to(this))
                     .make()
                     .load(instance.getClassLoader())
                     .getLoaded()
