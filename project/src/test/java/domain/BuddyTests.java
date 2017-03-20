@@ -36,7 +36,7 @@ public class BuddyTests {
     }
 
     @Test
-    public void buddyIntro() throws IllegalAccessException, InstantiationException {
+    public void buddyIntro() throws Exception {
         final Cat cat = new ByteBuddy()
                 .subclass(Cat.class)
                 /*.method(named("getStomach"))
