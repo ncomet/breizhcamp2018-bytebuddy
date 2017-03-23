@@ -7,7 +7,7 @@ import net.bytebuddy.implementation.bind.annotation.SuperCall;
 
 /**
  * LECTRA
- * MutantInterceptor class
+ * StrangeFeelingInterceptor class
  *
  * @author n.comet
  */
