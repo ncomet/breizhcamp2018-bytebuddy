@@ -70,20 +70,6 @@ public class BuddyTests {
     }
 
     @Test
-    public void classloadingStrategy() throws Exception {
-
-        final Cat cat = new ByteBuddy()
-                .subclass(Cat.class)
-                .method(named("getStomach"))
-                .intercept(value(Collections.singleton("NotToday")))
-                .make().load(getClass().getClassLoader(), ClassLoadingStrategy.Default.WRAPPER)
-                .getLoaded().newInstance();
-
-        assertThat(cat.getStomach()).containsExactly("NotToday");
-
-    }
-
-    @Test
     public void mockito() throws Exception {
         final Cat mock = Mockito.mock(Cat.class);
 
@@ -99,6 +85,20 @@ public class BuddyTests {
         mock.setName("Felix");
 
         assertThat(mock.getName()).isNull();
+    }
+
+    @Test
+    public void classloadingStrategy() throws Exception {
+
+        final Cat cat = new ByteBuddy()
+                .subclass(Cat.class)
+                .method(named("getStomach"))
+                .intercept(value(Collections.singleton("NotToday")))
+                .make().load(getClass().getClassLoader(), ClassLoadingStrategy.Default.WRAPPER)
+                .getLoaded().newInstance();
+
+        assertThat(cat.getStomach()).containsExactly("NotToday");
+
     }
 
 }
