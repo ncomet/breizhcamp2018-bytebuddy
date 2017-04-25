@@ -26,6 +26,7 @@ public class BuddySafe implements Safe {
         this.keyAttempt = keyAttempt;
     }
 
+    @Override
     public <T> T safeInstance(Class<T> instance) {
         try {
             return new ByteBuddy()
