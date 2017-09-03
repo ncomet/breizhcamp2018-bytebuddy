@@ -120,16 +120,16 @@ table.CodeRay td.code>pre{padding:0}
 <div class="deck-container">
 <section class="slide" id="title-slide">
 <h1><code>Byte Buddy</code> : la génération de bytecode facile !</h1>
-<span id="author" style="color: white">Nicolas Comet</span>
+<span id="author">Nicolas Comet</span>
 <br />
 <span id="email"><a href="mailto:nicolas.comet@gmail.com">nicolas.comet@gmail.com</a></span>
 <br />
 </section>
 <div id="preamble">
 <div class="sectionbody">
-<div class="imageblock">
+<div class="imageblock" style="float: right">
 <div class="content">
-<img alt="bandeau" height="117" src="images/bandeau_devoxx.png" width="1920" />
+<img alt="jug summer" height="100" src="images/jug-summer.png" width="bandeau" />
 </div>
 </div>
 </div>
@@ -166,7 +166,7 @@ leader mondial des solutions dédiées à l&#8217;industrie textile (machines et
 </div>
 <div class="ulist">
 <ul>
-<li>Membre du Bordeaux JUG</li>
+<li>Speaker &amp; Membre du Bordeaux JUG</li>
 </ul>
 </div>
 </section>
@@ -201,8 +201,8 @@ leader mondial des solutions dédiées à l&#8217;industrie textile (machines et
 </div>
 </div>
 </section>
-<section class="slide" id="_frameworks_génération_bytecode">
-<h2>Frameworks &amp; génération bytecode</h2>
+<section class="slide" id="_frameworks">
+<h2>Frameworks</h2>
 <div class="imageblock">
 <div class="content">
 <img alt="frameworks" height="517" src="images/frameworks.png" width="875" />
@@ -253,9 +253,9 @@ leader mondial des solutions dédiées à l&#8217;industrie textile (machines et
 </div>
 </div>
 <div class="paragraph"><p>Slides :</p></div>
-<div class="paragraph"><p><span class="icon"><i class="icon-external-link"></i></span> <a class="bare" href="https://ncomet.github.io/devoxxfr2017-bytebuddy/bytebuddy.html">https://ncomet.github.io/devoxxfr2017-bytebuddy/bytebuddy.html</a></p></div>
+<div class="paragraph"><p><span class="icon"><i class="icon-external-link"></i></span> <a class="bare" href="https://ncomet.github.io/jugsummercamp2017-bytebuddy/bytebuddy.html">https://ncomet.github.io/jugsummercamp2017-bytebuddy/bytebuddy.html</a></p></div>
 <div class="paragraph"><p>Sources :</p></div>
-<div class="paragraph"><p><span class="icon"><i class="icon-github"></i></span> <a class="bare" href="https://github.com/ncomet/devoxxfr2017-bytebuddy">https://github.com/ncomet/devoxxfr2017-bytebuddy</a></p></div>
+<div class="paragraph"><p><span class="icon"><i class="icon-github"></i></span> <a class="bare" href="https://github.com/ncomet/jugsummercamp2017-bytebuddy">https://github.com/ncomet/jugsummercamp2017-bytebuddy</a></p></div>
 </section>
 <div aria-role="navigation">
 <a class="deck-prev-link" href="#" title="Previous">&#8592;</a>
@@ -284,11 +284,11 @@ leader mondial des solutions dédiées à l&#8217;industrie textile (machines et
     (function($, deck, undefined) {
       $.deck.defaults.keys['previous'] = [8, 33, 37, 39];
       $.deck.defaults.keys['next'] = [13, 32, 34, 39];
-
+    
       $.extend(true, $[deck].defaults, {
           countNested: false
       });
-
+    
       $.deck('.slide');
     })(jQuery, 'deck');
   //]]>
@@ -316,28 +316,28 @@ leader mondial des solutions dédiées à l&#8217;industrie textile (machines et
     -webkit-box-pack: start;
     -ms-box-pack: start;
     box-pack: start;}
-
+    
     .bottom-left {
       left: 1%;
       bottom: 20%; }
-
+    
     .top-left {
       left: 1%;
       top: 20%; }
-
+    
     .bottom-right {
       right: 1%;
       bottom: 20%; }
-
+    
     .top-right {
       right: 1%;
       top: 20%; }
-
+    
     .center-up {
       right: 50%;
       top: 1%;
     }
-
+    
     .center-down {
       right: 50%;
       bottom: 1%;
