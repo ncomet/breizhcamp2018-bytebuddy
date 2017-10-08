@@ -1,27 +1,19 @@
 package domain;
 
+import frameworks.mock.Cosmockpolitan;
+import interceptors.GetterSetterInterceptor;
+import net.bytebuddy.ByteBuddy;
+import net.bytebuddy.dynamic.loading.ClassLoadingStrategy;
+import org.testng.annotations.Test;
+
+import java.lang.reflect.Modifier;
+import java.util.Collections;
+
 import static net.bytebuddy.implementation.FixedValue.value;
 import static net.bytebuddy.implementation.MethodDelegation.to;
 import static net.bytebuddy.matcher.ElementMatchers.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import interceptors.StrangeFeelingInterceptor;
-import net.bytebuddy.ByteBuddy;
-
-import net.bytebuddy.dynamic.loading.ClassLoadingStrategy;
-import org.mockito.Mockito;
-import org.testng.annotations.Test;
-
-import frameworks.mock.Cosmockpolitan;
-import interceptors.GetterSetterInterceptor;
-
-import java.util.Collections;
-
-/**
- * LECTRA
- * BuddyTests class
- * @author n.comet
- */
 public class BuddyTests {
 
     @Test
@@ -70,15 +62,6 @@ public class BuddyTests {
     }
 
     @Test
-    public void mockito() throws Exception {
-        final Cat mock = Mockito.mock(Cat.class);
-
-        mock.setName("Felix");
-
-        assertThat(mock.getName()).isNull();
-    }
-
-    @Test
     public void cosmockpolitan() throws Exception {
         final Cat mock = Cosmockpolitan.mock(Cat.class);
 
@@ -98,6 +81,24 @@ public class BuddyTests {
                 .getLoaded().newInstance();
 
         assertThat(cat.getStomach()).containsExactly("NotToday");
+
+    }
+
+    @Test
+    public void shouldCreateAnActress() throws Exception {
+
+        Actor actor = new ByteBuddy()
+                .subclass(Actor.class)
+                .name("domain.FemaleActress")
+                .method(named("characterName")).intercept(value("Daenerys Targaryen"))
+                .method(named("firstName")).intercept(value("Emilia"))
+                .method(named("lastName")).intercept(value("Clarke"))
+                .defineField("favoriteActor", Actor.class, Modifier.PUBLIC)
+                .make().load(getClass().getClassLoader())
+                .getLoaded()
+                .newInstance();
+
+        System.out.println(actor.greet());
 
     }
 

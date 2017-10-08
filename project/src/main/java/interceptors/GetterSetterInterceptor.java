@@ -1,16 +1,11 @@
 package interceptors;
 
-import java.util.concurrent.Callable;
-
 import net.bytebuddy.implementation.bind.annotation.Argument;
 import net.bytebuddy.implementation.bind.annotation.RuntimeType;
 import net.bytebuddy.implementation.bind.annotation.SuperCall;
 
-/**
- * LECTRA
- * GetterSetterInterceptor class
- * @author n.comet
- */
+import java.util.concurrent.Callable;
+
 public class GetterSetterInterceptor {
 
     @RuntimeType

@@ -1,23 +1,18 @@
 package frameworks.security.impl;
 
-import static net.bytebuddy.implementation.MethodDelegation.to;
-import static net.bytebuddy.matcher.ElementMatchers.isAnnotatedWith;
-
-import java.lang.reflect.Method;
-import java.util.concurrent.Callable;
-
+import frameworks.security.annotation.Lock;
+import frameworks.security.interfaces.Safe;
 import net.bytebuddy.ByteBuddy;
 import net.bytebuddy.implementation.bind.annotation.Origin;
 import net.bytebuddy.implementation.bind.annotation.RuntimeType;
 import net.bytebuddy.implementation.bind.annotation.SuperCall;
-import frameworks.security.annotation.Lock;
-import frameworks.security.interfaces.Safe;
 
-/**
- * LECTRA
- * BuddySafe class
- * @author n.comet
- */
+import java.lang.reflect.Method;
+import java.util.concurrent.Callable;
+
+import static net.bytebuddy.implementation.MethodDelegation.to;
+import static net.bytebuddy.matcher.ElementMatchers.isAnnotatedWith;
+
 public class BuddySafe implements Safe {
 
     private String keyAttempt;

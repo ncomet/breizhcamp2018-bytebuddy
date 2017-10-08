@@ -3,11 +3,6 @@ package domain;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * LECTRA
- * Cat class
- * @author n.comet
- */
 public class Cat {
 
     private String name;

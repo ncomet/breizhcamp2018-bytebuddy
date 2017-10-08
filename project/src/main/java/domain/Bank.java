@@ -2,11 +2,6 @@ package domain;
 
 import frameworks.security.annotation.Lock;
 
-/**
- * LECTRA
- * Bank class
- * @author n.comet
- */
 class Bank {
 
     private static final Double bankAccountTotal = 9215.32;

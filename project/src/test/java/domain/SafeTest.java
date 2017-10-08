@@ -1,17 +1,11 @@
 package domain;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import org.testng.annotations.Test;
-
 import frameworks.security.impl.BuddySafe;
 import frameworks.security.interfaces.Safe;
+import org.testng.annotations.Test;
 
-/**
- * LECTRA
- * SafeTest class
- * @author n.comet
- */
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class SafeTest {
 
     @Test
